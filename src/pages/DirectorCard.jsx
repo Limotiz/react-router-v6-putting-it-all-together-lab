@@ -8,7 +8,7 @@ function DirectorCard() {
   const { id } = useParams()
 
   // Find director by id (convert id to number)
- const director = directors.find(d => d.id === Number(id))
+ const director = directors.find(d => d.id === id)
 
   if (!director) return <h2>Director not found.</h2>
 

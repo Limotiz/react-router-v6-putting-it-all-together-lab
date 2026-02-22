@@ -17,7 +17,7 @@ function MovieForm() {
   const navigate = useNavigate()
 
   // Find the director by ID
-  const director = directors.find(d => d.id === Number(id))
+  const director = directors.find(d => d.id === id)
   if (!director) return <h2>Director not found.</h2>
 
   const handleSubmit = (e) => {
