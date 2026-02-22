@@ -1,41 +1,52 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
+import { useNavigate, useOutletContext, useParams } from "react-router-dom"
 
 function MovieForm() {
   const [title, setTitle] = useState("")
   const [time, setTime] = useState("")
   const [genres, setGenres] = useState("")
 
-  // Replace me
-  const director = null
-  
-  if (!director) { return <h2>Director not found.</h2>}
+  // Get director ID from URL
+  const { id } = useParams()
+
+  // Get directors and update function from context
+  const { directors, updateDirectors } = useOutletContext()
+
+  // Navigation hook
+  const navigate = useNavigate()
+
+  // Find the director by ID
+  const director = directors.find(d => d.id === Number(id))
+  if (!director) return <h2>Director not found.</h2>
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const newMovie = {
       id: uuidv4(),
       title,
       time: parseInt(time),
-      genres: genres.split(",").map((genre) => genre.trim()),
+      genres: genres.split(",").map(genre => genre.trim())
     }
+
     fetch(`http://localhost:4000/directors/${id}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({movies: [...director.movies, newMovie]})
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ movies: [...director.movies, newMovie] })
     })
-    .then(r => {
-      if (!r.ok) { throw new Error("failed to add movie") }
-      return r.json()
-    })
-    .then(data => {
-      console.log(data)
-      // handle context/state changes
-      // navigate to newly created movie page
-    })
-    .catch(console.log)
+      .then(r => {
+        if (!r.ok) throw new Error("failed to add movie")
+        return r.json()
+      })
+      .then(data => {
+        console.log(data)
+        // Update context/state
+        updateDirectors(data)
+        // Navigate to the new movie page
+        navigate(`/directors/${id}/movies/${newMovie.id}`)
+      })
+      .catch(console.log)
   }
 
   return (
@@ -70,4 +81,3 @@ function MovieForm() {
 }
 
 export default MovieForm
-

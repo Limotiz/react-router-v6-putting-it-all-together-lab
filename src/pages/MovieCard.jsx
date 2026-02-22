@@ -1,10 +1,18 @@
+import { useOutletContext, useParams } from "react-router-dom"
 
 function MovieCard() {
-  // Replace director and movie
-  const director = null
+  // Get directors from context
+  const { directors } = useOutletContext()
+
+  // Get director id and movieId from route params
+  const { id, movieId } = useParams()
+
+  // Find the director
+  const director = directors.find(d => d.id === Number(id))
   if (!director) return <h2>Director not found.</h2>
-  
-  const movie = null
+
+  // Find the movie
+  const movie = director.movies.find(m => m.id === Number(movieId))
   if (!movie) return <h2>Movie not found.</h2>
 
   return (
