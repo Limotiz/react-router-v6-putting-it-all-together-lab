@@ -2,9 +2,7 @@ import{BrowserRouter,Routes, Route} from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import ErrorPage from "./pages/ErrorPage"
-
 import NavBar from "./components/NavBar" 
-
 import DirectorContainer from"./pages/DirectorContainer"
 import DirectorList from "./pages/DirectorList"
 import DirectorCard from "./pages/DirectorCard"
