@@ -1,7 +1,7 @@
-Personal SPA Project – Movie Directory
+# Personal SPA Project – Movie Directory
 A modern React Movie Directory application that displays a list of directors and their movies. The application allows users to view directors, explore their movies, and dynamically add new directors and movies using React Router, outlet context, and navigation.
 
-Tools
+# Tools
 React
 CSS
 JavaScript
@@ -9,7 +9,7 @@ Vite
 HTML
 React Router
 
-Installation
+# Installation
 Get the GitHub repository
 https://github.com/Limotiz?tab=repositories
 
@@ -31,7 +31,7 @@ npm run dev
 Open in Browser
 http://localhost:5173
 
-Contributing
+# Contributing
 Community thrives in collaborations. It is what makes open source an amazing place to learn, create and inspire. If you want to make this project better your gesture is highly appreciated.
 
 Please fork the repo and create a pull request.
@@ -49,8 +49,8 @@ git push origin feature/newFeatures
 
 Open a Pull Request
 
-Contact
+# Contact
 David Musembi [david.musembi2@student.moringaschool.com](mailto:david.musembi2@student.moringaschool.com)
 
-Project Link
+# Project Link
 https://github.com/Limotiz/react-router-v6-putting-it-all-together-lab.git
